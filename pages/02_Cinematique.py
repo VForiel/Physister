@@ -555,7 +555,3 @@ st.markdown("""
 
 **Prête pour plus ?** Essaie de créer tes propres scénarios de mouvement et de prédire à quoi ressembleront les graphiques !
 """)
-
-# Pied de page
-st.markdown("---")
-st.markdown("*Fait avec ❤️ pour rendre la physique intuitive et amusante !*")

@@ -17,7 +17,26 @@ En physique, on passe notre temps à se poser deux questions :
 2.  **Combien ça fait au total ?** (Distance parcourue, énergie accumulée, aire totale) -> **L'Intégrale**
 """)
 
-tab1, tab2, tab3, tab4 = st.tabs(["⚡ La Dérivée", "∫ L'Intégrale", "📚 Formules Usuelles", "💡 Astuces de Grand Frère"])
+st.write("Visualise comment on passe d'une grandeur à l'autre.")
+    
+st.graphviz_chart("""
+digraph G {
+    rankdir=LR;
+    node [fontname="Helvetica", shape=box, style=filled, color="#BBDEFB"];
+    
+    Pos [label="Position / Angle\n(m ou °)", fillcolor="#E3F2FD"];
+    Vit [label="Vitesse\n(m/s ou °/s)", fillcolor="#FFF3E0"];
+    Acc [label="Accélération\n(m/s² ou °/s²)", fillcolor="#FFEBEE"];
+    
+    Pos -> Vit [label="DÉRIVÉE\n(Pente)", color="#1565C0", fontcolor="#1565C0"];
+    Vit -> Acc [label="DÉRIVÉE\n(Pente)", color="#E65100", fontcolor="#E65100"];
+    
+    Acc -> Vit [label="INTÉGRALE\n(Aire)", color="#C62828", fontcolor="#C62828", style=dashed];
+    Vit -> Pos [label="INTÉGRALE\n(Aire)", color="#2E7D32", fontcolor="#2E7D32", style=dashed];
+}
+""")
+
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["⚡ La Dérivée", "∫ L'Intégrale", "📚 Formules Usuelles", "💡 Astuces de Grand Frère", "📝 Exemples Détaillés"])
 
 # --- SECTION DÉRIVÉE ---
 with tab1:
@@ -171,3 +190,79 @@ with tab4:
     
     (C'est la règle de la chaîne, ou "chain rule" en anglais).
     """)
+
+# --- SECTION EXEMPLES ---
+with tab5:
+    st.header("📝 Exemples Kiné : La théorie dans la vraie vie")
+    st.write("Voyons comment cela s'applique concrètement en rééducation et biomécanique.")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader("1. Dérivée : Vitesse Angulaire du Coude")
+        st.markdown("**Contexte :** Tu analyses la flexion du coude d'un patient. L'angle de flexion $\\theta(t)$ (en degrés) est donné par :")
+        st.latex(r"\theta(t) = 3t^2 + 2t + 5")
+        st.markdown("**Question :** Quelle est la vitesse angulaire instantanée $\\omega(t)$ (en degrés/seconde) ?")
+        
+        st.info("""
+        **Rappel :** La vitesse angulaire est la **dérivée** de l'angle par rapport au temps.
+        $$ \\omega(t) = \\theta'(t) $$
+        """)
+        
+        st.markdown("""
+        **Calcul pas à pas :**
+        1.  **Identifier les termes :**
+            *   $3t^2$ (terme quadratique)
+            *   $2t$ (terme linéaire)
+            *   $5$ (angle initial constant)
+            
+        2.  **Dériver chaque terme :**
+            *   $(3t^2)' = 3 \\times 2t = 6t$
+            *   $(2t)' = 2 \\times 1 = 2$
+            *   $(5)' = 0$ (la position initiale ne change pas la vitesse)
+            
+        3.  **Résultat :**
+            $$ \\omega(t) = 6t + 2 \\text{ °/s} $$
+        """)
+        
+        st.success("✅ La vitesse de flexion augmente avec le temps (le mouvement accélère).")
+        
+    with col2:
+        st.subheader("2. Intégrale : Distance de Marche")
+        st.markdown("**Contexte :** Un patient en rééducation avance avec une vitesse qui augmente au fil du temps :")
+        st.latex(r"v(t) = 3t^2 + 2")
+        st.markdown("**Question :** Quelle distance totale $D$ a-t-il parcourue entre $t=0$ et $t=2$ secondes ?")
+        
+        st.info("""
+        **Stratégie :** On intègre chaque terme de la somme séparément.
+        $$ D = \\int_{0}^{2} (3t^2 + 2) dt $$
+        """)
+        
+        st.markdown("""
+        **Calcul pas à pas :**
+        
+        **1. Trouver la Primitive de chaque morceau :**
+        *   **Terme $3t^2$ :**
+            *   On garde le $3$.
+            *   $t^2$ devient $\\frac{t^3}{3}$.
+            *   $$ 3 \\times \\frac{t^3}{3} = t^3 $$
+        *   **Terme $2$ :**
+            *   Une constante $C$ devient $Ct$.
+            *   $$ 2 \\rightarrow 2t $$
+            
+        $\\Rightarrow$ **Primitive Totale :** $P(t) = t^3 + 2t$
+        
+        **2. Évaluer entre 0 et 2 :**
+        $$ D = P(2) - P(0) $$
+        
+        *   **À $t=2$ :**
+            $$ P(2) = (2)^3 + 2(2) = 8 + 4 = 12 $$
+        *   **À $t=0$ :**
+            $$ P(0) = (0)^3 + 2(0) = 0 $$
+            
+        **3. Résultat Final :**
+        $$ D = 12 - 0 = 12 \\text{ mètres} $$
+        """)
+        
+        st.success("✅ Le patient a parcouru **12 mètres**.")
+    
