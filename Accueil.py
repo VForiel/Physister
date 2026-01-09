@@ -21,20 +21,10 @@ st.set_page_config(
 
 # Page principale
 st.title("🔬 Cours de physique")
-st.markdown("### Apprentissage interactif pour étudiants en physique")
 
 st.markdown("""
-Bienvenue ! Cette application interactive t'aide à comprendre les concepts fondamentaux 
-de physique à travers des explications claires et des visualisations pratiques.
-
----
-
-### 📚 Sujets disponibles
-
-Sélectionne un sujet dans la barre latérale pour commencer :
-
-- **Cinématique** : vitesse, accélération et mouvement
-- *(D'autres sujets arrivent bientôt !)*
+Coucou petite soeur ! Cette application interactive t'aide à comprendre les concepts fondamentaux 
+de physique à travers des explications claires et des visualisations pratiques 😉
 
 ---
 
@@ -50,13 +40,13 @@ Sélectionne un sujet dans la barre latérale pour commencer :
 
 ### 💡 Conseils d'apprentissage
 
-- Commence par les bases et progresse graduellement
+- Commence par les bases (toutes les notions sont introduites dans l'ordre) et progresse graduellement
 - Expérimente avec des valeurs extrêmes pour comprendre les limites
 - Essaie de prédire ce qui va se passer avant de changer les paramètres
-- Fais des liens entre les mathématiques et les représentations visuelles
+- Fais des liens entre les mathématiques et les représentations visuelles (en physique, on utilise les maths car c'est necessaire pour formaliser, mais on préfère largement tout ce qui visuel pour bien comprendre !)
 - **Pose des questions à ton grand frère !**
 
 ---
 
-*Fait avec ❤️ pour t'aider à comprendre la physique*
+*Fait avec ❤️ pour t'aider à comprendre la meilleur matière des sciences !*
 """)
