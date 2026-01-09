@@ -383,9 +383,6 @@ with tab3:
             a1_cust = st.slider("Coefficient t", -3.0, 3.0, 1.0, 0.5, key="a1_cust")
             a0_cust = st.slider("Constante", -5.0, 5.0, 0.0, 0.5, key="a0_cust")
             st.latex(f"x(t) = {a0_cust:.1f} + {a1_cust:.1f}t + {a2_cust:.1f}t^2 + {a3:.2f}t^3")
-        
-        st.markdown("---")
-        show_animation = st.checkbox("Afficher l'Objet en Mouvement", value=True, key="show_anim")
     
     with col2:
         # Générer le tableau de temps
@@ -424,52 +421,10 @@ with tab3:
         # Créer une figure avec trois sous-graphiques
         fig = plt.figure(figsize=(12, 10))
         
-        if show_animation:
-            # Créer 4 sous-graphiques : animation + 3 graphiques
-            gs = fig.add_gridspec(4, 1, height_ratios=[1, 1, 1, 1])
-            ax_anim = fig.add_subplot(gs[0])
-            ax1 = fig.add_subplot(gs[1])
-            ax2 = fig.add_subplot(gs[2])
-            ax3 = fig.add_subplot(gs[3])
-            
-            # Sous-graphique d'animation
-            current_t = 5.0  # Milieu de la plage de temps
-            idx_current = np.argmin(np.abs(t - current_t))
-            x_current = x[idx_current]
-            v_current = v[idx_current]
-            a_current = a[idx_current]
-            
-            # Dessiner l'objet
-            ax_anim.plot([0, 10], [0, 0], 'k-', linewidth=1)  # Ligne du sol
-            ax_anim.plot(current_t, x_current, 'bo', markersize=20, label='Objet')
-            
-            # Dessiner le vecteur vitesse
-            if abs(v_current) > 0.1:
-                arrow_scale = 0.3
-                ax_anim.arrow(current_t, x_current, arrow_scale * v_current/abs(v_current), 0,
-                            head_width=0.3, head_length=0.2, fc='orange', ec='orange', linewidth=2,
-                            label=f'v={v_current:.1f} m/s')
-            
-            # Dessiner le vecteur accélération
-            if abs(a_current) > 0.1:
-                arrow_scale = 0.2
-                ax_anim.arrow(current_t, x_current, 0, arrow_scale * a_current/abs(a_current),
-                            head_width=0.2, head_length=0.2, fc='red', ec='red', linewidth=2,
-                            label=f'a={a_current:.1f} m/s²')
-            
-            ax_anim.set_xlim(-0.5, 10.5)
-            ax_anim.set_ylim(min(x)-2, max(x)+2)
-            ax_anim.set_ylabel('Position (m)', fontsize=10)
-            ax_anim.set_title(f"Mouvement de l'objet à t={current_t:.1f}s", fontsize=12, fontweight='bold')
-            ax_anim.legend(loc='upper right', fontsize=8)
-            ax_anim.grid(True, alpha=0.3)
-            ax_anim.set_xticks([])
-            
-        else:
-            gs = fig.add_gridspec(3, 1)
-            ax1 = fig.add_subplot(gs[0])
-            ax2 = fig.add_subplot(gs[1])
-            ax3 = fig.add_subplot(gs[2])
+        gs = fig.add_gridspec(3, 1)
+        ax1 = fig.add_subplot(gs[0])
+        ax2 = fig.add_subplot(gs[1])
+        ax3 = fig.add_subplot(gs[2])
         
         # Tracer la position
         ax1.plot(t, x, 'b-', linewidth=2, label='Position x(t)')
