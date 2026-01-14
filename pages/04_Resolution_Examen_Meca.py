@@ -354,48 +354,49 @@ with tab2:
         
         **Quelle la puissance $P$ dissipée dans la résistance externe ?**
         """)
-        with st.expander("Solution Q 2.1"):
-            st.write("""
-            **Analyse du schéma :**
-            Le terme "montées en opposition" avec "borne positive reliée à la borne négative" peut porter à confusion s'il s'agissait d'une seule maille (ce serait une série additive).
-            Cependant, le schéma (et les annotations d'étudiant visible) montre clairement une structure à **deux mailles** (deux piles en parallèle alimentant la résistance centrale).
-            
-            On a donc :
-            *   Branche 1 : Générateur de Thévenin ($V_1, R_1$).
-            *   Branche 2 : Générateur de Thévenin ($V_2, R_2$).
-            *   Branche 3 (centrale) : Résistance $R_3$.
-            
-            Les deux générateurs sont orientés pour débiter dans la branche centrale (mémé sens).
-            
-            **Méthode des noeuds (Millman) :**
-            Calculons la tension $U_{AB}$ aux bornes de $R_3$.
-            $$U_{AB} = \\frac{\\frac{V_1}{R_1} + \\frac{V_2}{R_2} + \\frac{0}{R_3}}{\\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}}$$
-            
-            *   $V_1/R_1 = 9.0 / 0.9 = 10$ A.
-            *   $V_2/R_2 = 9.0 / 1.8 = 5$ A.
-            *   Somme numérateur = $15$ A.
-            
-            *   $1/R_1 = 1/0.9 \\approx 1.11$ S.
-            *   $1/R_2 = 1/1.8 \\approx 0.55$ S.
-            *   $1/R_3 = 1/2.4 \\approx 0.416$ S.
-            *   Pour être précis, utilisons des fractions :
-                $$1/0.9 = 10/9$$
-                $$1/1.8 = 5/9$$
-                $$1/2.4 = 5/12$$
-                Somme = $15/9 + 5/12 = 5/3 + 5/12 = 20/12 + 5/12 = 25/12$ S.
-            
-            $$U_{AB} = \\frac{15}{25/12} = 15 \\times \\frac{12}{25} = 3 \\times \\frac{12}{5} = \\frac{36}{5} = 7.2 \\text{ V}$$
-            
-            **Puissance :**
-            $$P = \\frac{U_{AB}^2}{R_3}$$
-            $$P = \\frac{(7.2)^2}{2.4} = \\frac{51.84}{2.4} = 21.6 \\text{ W}$$
-            
-            (Autre calcul rapide : $7.2 / 2.4 = 3$ A. $P = 3 \\times 7.2 = 21.6$ W).
-            """)
-
+    
     with col21_img:
          with st.expander("Image Q 2.1, Q 2.2 & Q 2.4"):
             st.image(load_image("2.1 & 2.2 & 2.3.jpeg"))
+
+    with st.expander("Solution Q 2.1"):
+        st.write("""
+        **Analyse du schéma :**
+        Le terme "montées en opposition" avec "borne positive reliée à la borne négative" peut porter à confusion s'il s'agissait d'une seule maille (ce serait une série additive).
+        Cependant, le schéma (et les annotations d'étudiant visible) montre clairement une structure à **deux mailles** (deux piles en parallèle alimentant la résistance centrale).
+        
+        On a donc :
+        *   Branche 1 : Générateur de Thévenin ($V_1, R_1$).
+        *   Branche 2 : Générateur de Thévenin ($V_2, R_2$).
+        *   Branche 3 (centrale) : Résistance $R_3$.
+        
+        Les deux générateurs sont orientés pour débiter dans la branche centrale (mémé sens).
+        
+        **Méthode des noeuds (Millman) :**
+        Calculons la tension $U_{AB}$ aux bornes de $R_3$.
+        $$U_{AB} = \\frac{\\frac{V_1}{R_1} + \\frac{V_2}{R_2} + \\frac{0}{R_3}}{\\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}}$$
+        
+        *   $V_1/R_1 = 9.0 / 0.9 = 10$ A.
+        *   $V_2/R_2 = 9.0 / 1.8 = 5$ A.
+        *   Somme numérateur = $15$ A.
+        
+        *   $1/R_1 = 1/0.9 \\approx 1.11$ S.
+        *   $1/R_2 = 1/1.8 \\approx 0.55$ S.
+        *   $1/R_3 = 1/2.4 \\approx 0.416$ S.
+        *   Pour être précis, utilisons des fractions :
+            $$1/0.9 = 10/9$$
+            $$1/1.8 = 5/9$$
+            $$1/2.4 = 5/12$$
+            Somme = $15/9 + 5/12 = 5/3 + 5/12 = 20/12 + 5/12 = 25/12$ S.
+        
+        $$U_{AB} = \\frac{15}{25/12} = 15 \\times \\frac{12}{25} = 3 \\times \\frac{12}{5} = \\frac{36}{5} = 7.2 \\text{ V}$$
+        
+        **Puissance :**
+        $$P = \\frac{U_{AB}^2}{R_3}$$
+        $$P = \\frac{(7.2)^2}{2.4} = \\frac{51.84}{2.4} = 21.6 \\text{ W}$$
+        
+        (Autre calcul rapide : $7.2 / 2.4 = 3$ A. $P = 3 \\times 7.2 = 21.6$ W).
+        """)
 
     st.divider()
 
@@ -412,35 +413,36 @@ with tab2:
         
         **Quelle est la valeur de $C$ ?**
         """)
-        with st.expander("Solution Q 2.2"):
-            st.write("""
-            **Loi de charge :**
-            $$Q(t) = Q_{max} \\left( 1 - e^{-t/\\tau} \\right)$$ avec $\\tau = RC$.
-            
-            **Système d'équations :**
-            1.  $Q(t_1) = Q_{max} (1 - e^{-1})$. Ceci implique que le terme exponentiel vaut $e^{-1}$.
-                $$e^{-t_1/\\tau} = e^{-1} \\implies t_1/\\tau = 1 \\implies t_1 = \\tau$$
-            
-            2.  $Q(t_2) = Q_{max} (1 - e^{-2})$. De même :
-                $$e^{-t_2/\\tau} = e^{-2} \\implies t_2/\\tau = 2 \\implies t_2 = 2\\tau$$
-            
-            **Donnée temporelle :**
-            On sait que $t_2 = t_1 + 20$ ms.
-            En remplaçant :
-            $$2\\tau = \\tau + 20 \\text{ ms}$$
-            $$\\tau = 20 \\text{ ms}$$
-            
-            **Calcul de C :**
-            $\\tau = RC \\implies C = \\tau / R$.
-            *   $\\tau = 20 \\times 10^{-3}$ s.
-            *   $R = 1 \\text{ k}\\Omega = 10^3 \\Omega$.
-            
-            $$C = \\frac{20 \\times 10^{-3}}{10^3} = 20 \\times 10^{-6} \\text{ F} = 20 \\mu\\text{F}$$
-            """)
-
+        
     with col22_img:
          # Same image as 2.1
         pass
+
+    with st.expander("Solution Q 2.2"):
+        st.write("""
+        **Loi de charge :**
+        $$Q(t) = Q_{max} \\left( 1 - e^{-t/\\tau} \\right)$$ avec $\\tau = RC$.
+        
+        **Système d'équations :**
+        1.  $Q(t_1) = Q_{max} (1 - e^{-1})$. Ceci implique que le terme exponentiel vaut $e^{-1}$.
+            $$e^{-t_1/\\tau} = e^{-1} \\implies t_1/\\tau = 1 \\implies t_1 = \\tau$$
+        
+        2.  $Q(t_2) = Q_{max} (1 - e^{-2})$. De même :
+            $$e^{-t_2/\\tau} = e^{-2} \\implies t_2/\\tau = 2 \\implies t_2 = 2\\tau$$
+        
+        **Donnée temporelle :**
+        On sait que $t_2 = t_1 + 20$ ms.
+        En remplaçant :
+        $$2\\tau = \\tau + 20 \\text{ ms}$$
+        $$\\tau = 20 \\text{ ms}$$
+        
+        **Calcul de C :**
+        $\\tau = RC \\implies C = \\tau / R$.
+        *   $\\tau = 20 \\times 10^{-3}$ s.
+        *   $R = 1 \\text{ k}\\Omega = 10^3 \\Omega$.
+        
+        $$C = \\frac{20 \\times 10^{-3}}{10^3} = 20 \\times 10^{-6} \\text{ F} = 20 \\mu\\text{F}$$
+        """)
 
     st.divider()
 
@@ -459,34 +461,35 @@ with tab2:
         
         **Quelle est l'énergie $U$ dans le condensateur isolé avec le diélectrique ?**
         """)
-        with st.expander("Solution Q 2.3"):
-            st.write("""
-            **Étape 1 : Avant insertion (dans le vide/air)**
-            *   Capacité $C_0 = \\frac{\\epsilon_0 S}{d}$.
-                *   $\\epsilon_0 = 10^{-11}$ F/m.
-                *   $S = 100 \\text{ cm}^2 = 100 \\times 10^{-4} \\text{ m}^2 = 10^{-2} \\text{ m}^2$.
-                *   $d = 1 \\text{ mm} = 10^{-3} \\text{ m}$.
-                $$C_0 = \\frac{10^{-11} \\times 10^{-2}}{10^{-3}} = 10^{-10} \\text{ F}$$
-            *   Charge $Q_0$ acquise sous $V=100$ V :
-                $$Q_0 = C_0 V = 10^{-10} \\times 100 = 10^{-8} \\text{ C}$$
-            *   Énergie initiale $U_0 = \\frac{1}{2} C_0 V^2 = \\frac{1}{2} Q_0 V = 0.5 \\times 10^{-6}$ J.
-            
-            **Étape 2 : Condensateur isolé**
-            La source est déconnectée $\\rightarrow$ La **charge $Q$ reste constante**.
-            $$Q = Q_0 = 10^{-8} \\text{ C}$$
-            
-            **Étape 3 : Avec diélectrique**
-            La capacité change : $C' = \\epsilon_r C_0$.
-            $$C' = 5 \\times C_0 = 5 \\cdot 10^{-10} \\text{ F}$$
-            
-            **Calcul de l'énergie finale :**
-            On utilise la formule avec $Q$ (car $Q$ est constant, $V$ change) :
-            $$U = \\frac{1}{2} \\frac{Q^2}{C'}$$
-            $$U = \\frac{1}{2} \\frac{(10^{-8})^2}{5 \\cdot 10^{-10}} = \\frac{1}{2} \\frac{10^{-16}}{5 \\cdot 10^{-10}}$$
-            $$U = \\frac{1}{10} 10^{-6} = 10^{-7} \\text{ J}$$
-            
-            **Note :** L'énergie a diminué (divisée par $\\epsilon_r$). Le travail fourni pour insérer le diélectrique est négatif (le diélectrique est aspiré).
-            """)
+    
+    with st.expander("Solution Q 2.3"):
+        st.write("""
+        **Étape 1 : Avant insertion (dans le vide/air)**
+        *   Capacité $C_0 = \\frac{\\epsilon_0 S}{d}$.
+            *   $\\epsilon_0 = 10^{-11}$ F/m.
+            *   $S = 100 \\text{ cm}^2 = 100 \\times 10^{-4} \\text{ m}^2 = 10^{-2} \\text{ m}^2$.
+            *   $d = 1 \\text{ mm} = 10^{-3} \\text{ m}$.
+            $$C_0 = \\frac{10^{-11} \\times 10^{-2}}{10^{-3}} = 10^{-10} \\text{ F}$$
+        *   Charge $Q_0$ acquise sous $V=100$ V :
+            $$Q_0 = C_0 V = 10^{-10} \\times 100 = 10^{-8} \\text{ C}$$
+        *   Énergie initiale $U_0 = \\frac{1}{2} C_0 V^2 = \\frac{1}{2} Q_0 V = 0.5 \\times 10^{-6}$ J.
+        
+        **Étape 2 : Condensateur isolé**
+        La source est déconnectée $\\rightarrow$ La **charge $Q$ reste constante**.
+        $$Q = Q_0 = 10^{-8} \\text{ C}$$
+        
+        **Étape 3 : Avec diélectrique**
+        La capacité change : $C' = \\epsilon_r C_0$.
+        $$C' = 5 \\times C_0 = 5 \\cdot 10^{-10} \\text{ F}$$
+        
+        **Calcul de l'énergie finale :**
+        On utilise la formule avec $Q$ (car $Q$ est constant, $V$ change) :
+        $$U = \\frac{1}{2} \\frac{Q^2}{C'}$$
+        $$U = \\frac{1}{2} \\frac{(10^{-8})^2}{5 \\cdot 10^{-10}} = \\frac{1}{2} \\frac{10^{-16}}{5 \\cdot 10^{-10}}$$
+        $$U = \\frac{1}{10} 10^{-6} = 10^{-7} \\text{ J}$$
+        
+        **Note :** L'énergie a diminué (divisée par $\\epsilon_r$). Le travail fourni pour insérer le diélectrique est négatif (le diélectrique est aspiré).
+        """)
 
     st.divider()
 
@@ -501,33 +504,34 @@ with tab2:
         
         **Quelle est l'expression de la force minimale $F$ requise pour mettre le bloc en mouvement ?**
         """)
-        with st.expander("Solution Q 2.4"):
-            st.write("""
-            **Bilan des forces :**
-            Nous cherchons la condition limite de glissement (Loi de Coulomb : $F_{frot} = \\mu_s N$).
-            
-            1.  **Axe Vertical (y) :**
-                *   Poids $P = mg$ (vers le bas).
-                *   Force du ressort $F_k$. Le ressort est comprimé (longueur $h < h_0$). Il pousse donc vers le bas sur le bloc.
-                    *   Compression $\\Delta x = h_0 - h$.
-                    *   $F_k = k(h_0 - h)$.
-                *   Réaction normale du sol $N$ (vers le haut).
-                
-                Équilibre vertical : $N = P + F_k = mg + k(h_0 - h)$.
-            
-            2.  **Axe Horizontal (x) :**
-                *   Force de poussée $F$.
-                *   Frottement statique $f$ (opposé au mouvement).
-                
-                Pour bouger, il faut vaincre le frottement maximal : $F > f_{max} = \\mu_s N$.
-            
-            **Résultat :**
-            $$F_{min} = \\mu_s (mg + k(h_0 - h))$$
-            """)
-
+        
     with col24_img:
         with st.expander("Image Q 2.4 & Q 2.5"):
             st.image(load_image("2.4 & 2.5.jpeg"))
+
+    with st.expander("Solution Q 2.4"):
+        st.write("""
+        **Bilan des forces :**
+        Nous cherchons la condition limite de glissement (Loi de Coulomb : $F_{frot} = \\mu_s N$).
+        
+        1.  **Axe Vertical (y) :**
+            *   Poids $P = mg$ (vers le bas).
+            *   Force du ressort $F_k$. Le ressort est comprimé (longueur $h < h_0$). Il pousse donc vers le bas sur le bloc.
+                *   Compression $\\Delta x = h_0 - h$.
+                *   $F_k = k(h_0 - h)$.
+            *   Réaction normale du sol $N$ (vers le haut).
+            
+            Équilibre vertical : $N = P + F_k = mg + k(h_0 - h)$.
+        
+        2.  **Axe Horizontal (x) :**
+            *   Force de poussée $F$.
+            *   Frottement statique $f$ (opposé au mouvement).
+            
+            Pour bouger, il faut vaincre le frottement maximal : $F > f_{max} = \\mu_s N$.
+        
+        **Résultat :**
+        $$F_{min} = \\mu_s (mg + k(h_0 - h))$$
+        """)
 
     st.divider()
 
@@ -548,39 +552,40 @@ with tab2:
         
         **Quelle est l'expression de la hauteur maximale atteinte par les deux blocs ?**
         """)
-        with st.expander("Solution Q 2.5"):
-            st.write("""
-            Le problème se décompose en 3 phases.
-            
-            **Phase 1 : Propulsion (Conservation de l'énergie)**
-            *   Etat initial : Ressort comprimé de $h$ (énergie $1/2 k h^2$), vitesse nulle.
-            *   Etat intermédiaire (juste avant choc) : Le bloc 1 monte de $h_0$. Vitesse $v_1$.
-            $$E_{init} = E_{avant\\_choc} \\implies \\frac{1}{2} k h^2 = m g h_0 + \\frac{1}{2} m v_1^2$$
-            $$v_1^2 = \\frac{2}{m} (\\frac{1}{2} k h^2 - m g h_0) = \\frac{k h^2}{m} - 2 g h_0$$
-            
-            **Phase 2 : Collision Inélastique (Conservation de la quantité de mouvement)**
-            *   Juste avant : Bloc 1 ($m$, $v_1$), Bloc 2 ($m$, $0$).
-            *   Juste après : Ensemble ($2m$, $v'$).
-            $$m v_1 = (m + m) v' \\implies v' = \\frac{v_1}{2}$$
-            
-            **Phase 3 : Ascension finale (Conservation de l'énergie)**
-            *   L'ensemble de masse $2m$ part de la hauteur $h_0$ avec vitesse $v'$ et monte de $\\Delta H$.
-            *   Energie cinétique après choc : $E_c' = \\frac{1}{2} (2m) v'^2 = m (\\frac{v_1}{2})^2 = \\frac{1}{4} m v_1^2$.
-            *   Cette énergie est convertie en potentiel : $E_c' = (2m) g \\Delta H$.
-            
-            $$\\Delta H = \\frac{E_c'}{2mg} = \\frac{\\frac{1}{4} m v_1^2}{2mg} = \\frac{v_1^2}{8g}$$
-            
-            En remplaçant $v_1^2$ :
-            $$\\Delta H = \\frac{1}{8g} (\\frac{k h^2}{m} - 2 g h_0) = \\frac{k h^2}{8mg} - \\frac{h_0}{4}$$
-            
-            **Hauteur Maximale Totale (depuis le point de départ du bloc 2, soit $h_0$ à partir du bas) :**
-            Nous mesurons par rapport au sol (bas du tube) ? Le bloc 2 était à $h_0$.
-            $$H_{max} = h_0 + \\Delta H = h_0 + \\frac{k h^2}{8mg} - \\frac{h_0}{4}$$
-            $$H_{max} = \\frac{3}{4} h_0 + \\frac{k h^2}{8mg}$$
-            """)
-
+    
     with col25_img:
         pass
+
+    with st.expander("Solution Q 2.5"):
+        st.write("""
+        Le problème se décompose en 3 phases.
+        
+        **Phase 1 : Propulsion (Conservation de l'énergie)**
+        *   Etat initial : Ressort comprimé de $h$ (énergie $1/2 k h^2$), vitesse nulle.
+        *   Etat intermédiaire (juste avant choc) : Le bloc 1 monte de $h_0$. Vitesse $v_1$.
+        $$E_{init} = E_{avant\\_choc} \\implies \\frac{1}{2} k h^2 = m g h_0 + \\frac{1}{2} m v_1^2$$
+        $$v_1^2 = \\frac{2}{m} (\\frac{1}{2} k h^2 - m g h_0) = \\frac{k h^2}{m} - 2 g h_0$$
+        
+        **Phase 2 : Collision Inélastique (Conservation de la quantité de mouvement)**
+        *   Juste avant : Bloc 1 ($m$, $v_1$), Bloc 2 ($m$, $0$).
+        *   Juste après : Ensemble ($2m$, $v'$).
+        $$m v_1 = (m + m) v' \\implies v' = \\frac{v_1}{2}$$
+        
+        **Phase 3 : Ascension finale (Conservation de l'énergie)**
+        *   L'ensemble de masse $2m$ part de la hauteur $h_0$ avec vitesse $v'$ et monte de $\\Delta H$.
+        *   Energie cinétique après choc : $E_c' = \\frac{1}{2} (2m) v'^2 = m (\\frac{v_1}{2})^2 = \\frac{1}{4} m v_1^2$.
+        *   Cette énergie est convertie en potentiel : $E_c' = (2m) g \\Delta H$.
+        
+        $$\\Delta H = \\frac{E_c'}{2mg} = \\frac{\\frac{1}{4} m v_1^2}{2mg} = \\frac{v_1^2}{8g}$$
+        
+        En remplaçant $v_1^2$ :
+        $$\\Delta H = \\frac{1}{8g} (\\frac{k h^2}{m} - 2 g h_0) = \\frac{k h^2}{8mg} - \\frac{h_0}{4}$$
+        
+        **Hauteur Maximale Totale (depuis le point de départ du bloc 2, soit $h_0$ à partir du bas) :**
+        Nous mesurons par rapport au sol (bas du tube) ? Le bloc 2 était à $h_0$.
+        $$H_{max} = h_0 + \\Delta H = h_0 + \\frac{k h^2}{8mg} - \\frac{h_0}{4}$$
+        $$H_{max} = \\frac{3}{4} h_0 + \\frac{k h^2}{8mg}$$
+        """)
 
     st.divider()
 
@@ -598,34 +603,35 @@ with tab2:
         
         **Quelle est l'expression de la vitesse de rotation $\\omega$ de la roue ?**
         """)
-        with st.expander("Solution Q 2.6"):
-            st.write("""
-            **Méthode des Puissances (le plus simple) :**
-            La vitesse est constante, donc l'énergie cinétique est constante.
-            La puissance fournie par les forces motrices compense exactement la puissance dissipée.
-            
-            1.  **Puissance motrice (Poids) :**
-                Le poids fait avancer la roue. La composante active est $F_{g, //}$.
-                $P_{g} = \\vec{P} \\cdot \\vec{v} = (mg \\sin \\phi) v$.
-                Comme $v = R\\omega$, $P_g = mg R \\sin \\phi \\cdot \\omega$.
-            
-            2.  **Puissance résistante (Amortisseur) :**
-                Le couple résistant est $\\tau = K\\omega$.
-                $P_{diss} = \\tau \\omega = K \\omega^2$.
-            
-            (Note : La force de frottement au point de contact ne travaille pas car la vitesse du point de contact est nulle en roulement sans glissement).
-            
-            **Bilan :**
-            $$P_g = P_{diss}$$
-            $$mg R \\sin \\phi \\cdot \\omega = K \\omega^2$$
-            
-            En simplifiant par $\\omega$ (non nul) :
-            $$\\omega = \\frac{mg R \\sin \\phi}{K}$$
-            """)
-
+        
     with col26_img:
          with st.expander("Image Q 2.6 & Q 2.7"):
             st.image(load_image("2.6 & 2.7.jpeg"))
+
+    with st.expander("Solution Q 2.6"):
+        st.write(r"""
+        **Méthode des Puissances (le plus simple) :**
+        La vitesse est constante, donc l'énergie cinétique est constante.
+        La puissance fournie par les forces motrices compense exactement la puissance dissipée.
+        
+        1.  **Puissance motrice (Poids) :**
+            Le poids fait avancer la roue. La composante active est $F_{g, //}$.
+            $P_{g} = \vec{P} \cdot \vec{v} = (mg \sin \phi) v$.
+            Comme $v = R\omega$, $P_g = mg R \sin \phi \cdot \omega$.
+        
+        2.  **Puissance résistante (Amortisseur) :**
+            Le couple résistant est $\tau = K\omega$.
+            $P_{diss} = \tau \omega = K \omega^2$.
+        
+        (Note : La force de frottement au point de contact ne travaille pas car la vitesse du point de contact est nulle en roulement sans glissement).
+        
+        **Bilan :**
+        $$P_g = P_{diss}$$
+        $$mg R \sin \phi \cdot \omega = K \omega^2$$
+        
+        En simplifiant par $\omega$ (non nul) :
+        $$\omega = \frac{mg R \sin \phi}{K}$$
+        """)
 
     st.divider()
 
@@ -643,37 +649,38 @@ with tab2:
         
         **Quelle est l'expression de la vitesse angulaire $\\omega(\\theta)$ ?**
         """)
-        with st.expander("Solution Q 2.7"):
-            st.write("""
-            **Méthode : Conservation de l'Énergie Mécanique**
-            Le sytème est conservatif (pas de frottements).
-            L'énergie totale est : $E = E_{cinétique} + E_{potentielle}$.
-            
-            1.  **État Initial ($\theta \approx 0$, disons position haute) :**
-                *   Vitesse nulle $\implies E_k = 0$.
-                *   Hauteur $z = L$ (si on place l'origine au pivot). Ou $z=2L$ si sol en bas.
-                *   Prenons l'origine des potentiels au pivot ($z=0$ au centre).
-                *   La bille est en haut : $z_{init} = +L$.
-                *   $E_{init} = m g L$.
-            
-            2.  **État Quelconque (angle $\theta$) :**
-                *   La hauteur de la bille est $z(\theta) = L \cos \theta$ (Attention à la convention d'angle, ici $\theta=0$ en haut est cohérent avec l'énoncé qui dit "descend puis remonte à $2\pi$").
-                *   Vitesse linéaire : $v = L \omega$.
-                *   $E_{cin} = \frac{1}{2} m v^2 = \frac{1}{2} m L^2 \omega^2$.
-                *   $E_{pot} = m g z = m g L \cos \theta$.
-                *   $E_{tot} = \frac{1}{2} m L^2 \omega^2 + m g L \cos \theta$.
-            
-            **Conservation :**
-            $$E_{init} = E_{tot}$$
-            $$m g L = \frac{1}{2} m L^2 \omega^2 + m g L \cos \theta$$
-            
-            On simplifie par $m$ et $L$ (non nuls) :
-            $$g = \frac{1}{2} L \omega^2 + g \cos \theta$$
-            $$\frac{1}{2} L \omega^2 = g - g \cos \theta = g (1 - \cos \theta)$$
-            $$\omega^2 = \frac{2g}{L} (1 - \cos \theta)$$
-            
-            $$\\omega(\\theta) = \sqrt{\frac{2g}{L} (1 - \cos(\\theta))}$$
-            """)
+        
+    with st.expander("Solution Q 2.7"):
+        st.write(r"""
+        **Méthode : Conservation de l'Énergie Mécanique**
+        Le sytème est conservatif (pas de frottements).
+        L'énergie totale est : $E = E_{cinétique} + E_{potentielle}$.
+        
+        1.  **État Initial ($\theta \approx 0$, disons position haute) :**
+            *   Vitesse nulle $\implies E_k = 0$.
+            *   Hauteur $z = L$ (si on place l'origine au pivot). Ou $z=2L$ si sol en bas.
+            *   Prenons l'origine des potentiels au pivot ($z=0$ au centre).
+            *   La bille est en haut : $z_{init} = +L$.
+            *   $E_{init} = m g L$.
+        
+        2.  **État Quelconque (angle $\theta$) :**
+            *   La hauteur de la bille est $z(\theta) = L \cos \theta$ (Attention à la convention d'angle, ici $\theta=0$ en haut est cohérent avec l'énoncé qui dit "descend puis remonte à $2\pi$").
+            *   Vitesse linéaire : $v = L \omega$.
+            *   $E_{cin} = \frac{1}{2} m v^2 = \frac{1}{2} m L^2 \omega^2$.
+            *   $E_{pot} = m g z = m g L \cos \theta$.
+            *   $E_{tot} = \frac{1}{2} m L^2 \omega^2 + m g L \cos \theta$.
+        
+        **Conservation :**
+        $$E_{init} = E_{tot}$$
+        $$m g L = \frac{1}{2} m L^2 \omega^2 + m g L \cos \theta$$
+        
+        On simplifie par $m$ et $L$ (non nuls) :
+        $$g = \frac{1}{2} L \omega^2 + g \cos \theta$$
+        $$\frac{1}{2} L \omega^2 = g - g \cos \theta = g (1 - \cos \theta)$$
+        $$\omega^2 = \frac{2g}{L} (1 - \cos \theta)$$
+        
+        $$\omega(\theta) = \sqrt{\frac{2g}{L} (1 - \cos(\theta))}$$
+        """)
 
     st.divider()
 
@@ -688,37 +695,38 @@ with tab2:
         
         **Quelle doit être le rapport entre les densités de charge $\\rho$ et $\\sigma$ afin que le champ électrique soit nul à l'extérieur de la coquille sphérique ?**
         """)
-        with st.expander("Solution Q 2.8"):
-            st.write("""
-            **Théorème de Gauss :**
-            Pour une symétrie sphérique, le champ électrique à l'extérieur d'une distribution de charge ne dépend que de la **charge totale** contenue à l'intérieur.
-            $$E_{ext} \\propto Q_{totale}$$
-            Pour que le champ soit nul à l'extérieur ($r > b$), il faut que la charge totale apparente soit nulle.
-            
-            **Calcul des charges :**
-            1.  **Sphère interne (Pleine) :**
-                *   Rayon $a$, densité volumique $\\rho$.
-                *   Charge $Q_{sphere} = \text{Volume} \times \rho = \frac{4}{3} \pi a^3 \rho$.
-            
-            2.  **Coquille externe (Surface) :**
-                *   Rayon $b$, densité surfacique $\\sigma$.
-                *   Charge $Q_{coquille} = \text{Surface} \times \sigma = 4 \pi b^2 \sigma$.
-            
-            **Condition d'annulation :**
-            $$Q_{totale} = Q_{sphere} + Q_{coquille} = 0$$
-            $$\frac{4}{3} \pi a^3 \rho + 4 \pi b^2 \sigma = 0$$
-            
-            On simplifie par $4\pi$ :
-            $$\frac{1}{3} a^3 \rho + b^2 \sigma = 0$$
-            $$b^2 \sigma = - \frac{1}{3} a^3 \rho$$
-            
-            **Rapport demandé ($\rho$ et $\\sigma$) :**
-            Exprimons le ratio $\\rho / \\sigma$ :
-            $$\frac{\\rho}{\\sigma} = - \frac{3 b^2}{a^3}$$
-            
-            (Cela signifie que les charges doivent être de signes opposés pour se compenser).
-            """)
-
+        
     with col28_img:
         with st.expander("Image Q 2.8"):
             st.image(load_image("2.8.jpeg"))
+
+    with st.expander("Solution Q 2.8"):
+        st.write(r"""
+        **Théorème de Gauss :**
+        Pour une symétrie sphérique, le champ électrique à l'extérieur d'une distribution de charge ne dépend que de la **charge totale** contenue à l'intérieur.
+        $$E_{ext} \propto Q_{totale}$$
+        Pour que le champ soit nul à l'extérieur ($r > b$), il faut que la charge totale apparente soit nulle.
+        
+        **Calcul des charges :**
+        1.  **Sphère interne (Pleine) :**
+            *   Rayon $a$, densité volumique $\rho$.
+            *   Charge $Q_{sphere} = \text{Volume} \times \rho = \frac{4}{3} \pi a^3 \rho$.
+        
+        2.  **Coquille externe (Surface) :**
+            *   Rayon $b$, densité surfacique $\sigma$.
+            *   Charge $Q_{coquille} = \text{Surface} \times \sigma = 4 \pi b^2 \sigma$.
+        
+        **Condition d'annulation :**
+        $$Q_{totale} = Q_{sphere} + Q_{coquille} = 0$$
+        $$\frac{4}{3} \pi a^3 \rho + 4 \pi b^2 \sigma = 0$$
+        
+        On simplifie par $4\pi$ :
+        $$\frac{1}{3} a^3 \rho + b^2 \sigma = 0$$
+        $$b^2 \sigma = - \frac{1}{3} a^3 \rho$$
+        
+        **Rapport demandé ($\rho$ et $\sigma$) :**
+        Exprimons le ratio $\rho / \sigma$ :
+        $$\frac{\rho}{\sigma} = - \frac{3 b^2}{a^3}$$
+        
+        (Cela signifie que les charges doivent être de signes opposés pour se compenser).
+        """)
