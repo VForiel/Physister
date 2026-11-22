@@ -128,7 +128,7 @@ stimulus est codée par la **fréquence** des PA, pas par leur taille.
         fig.add_hline(y=-65, line_dash="dot", annotation_text="repos")
         fig.update_layout(height=320, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="Temps (ms)",
                           yaxis_title="Potentiel (mV)", yaxis_range=[-90, 60])
-        st.plotly_chart(fig, width="stretch")
+        ui.chart(fig, "neurophysiologie_0")
     st.markdown("""
 **Expériences à faire**
 - Baisse le 1er stimulus jusqu'à trouver le **seuil** (vers 7 µA/cm²) : en dessous, une petite bosse ; au-dessus, un PA complet, toujours de la même taille.

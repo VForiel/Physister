@@ -103,8 +103,9 @@ On mesure la [[cvf|CVF]] et le [[vems|VEMS]], et on calcule le [[tiffeneau|rappo
         fig.add_trace(go.Scatter(x=t, y=vol, name="Patient"))
         fig.add_trace(go.Scatter(x=[1], y=[vems_l], mode="markers", marker=dict(size=11), name="VEMS (à 1 s)"))
         fig.update_layout(height=290, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="Temps (s)",
-                          yaxis_title="Volume expiré (L)", legend=dict(orientation="h", y=-0.25))
-        st.plotly_chart(fig, width="stretch")
+                          yaxis_title="Volume expiré (L)", legend=dict(orientation="h", y=-0.25),
+                          xaxis_range=[0, 6], yaxis_range=[0, 6.5])
+        ui.chart(fig, "cardio_respiratoire_0")
     if ratio < 0.70:
         st.error(f"VEMS/CVF = {ratio:.2f} < 0,70 : **syndrome obstructif**. Le VEMS vaut {vems_l / (0.8 * pred):.0%} du prédit "
                  f"(VEMS prédit simplifié ici à 80 % de la CVF prédite).")

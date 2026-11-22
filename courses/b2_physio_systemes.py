@@ -137,8 +137,9 @@ mesure la vitesse de vidange (diminué dans l'asthme et la BPCO).
         fig.add_trace(go.Scatter(x=x, y=sat(x, p50), name="Tes conditions"))
         fig.add_trace(go.Scatter(x=[po2], y=[sat(po2, p50)], mode="markers", marker=dict(size=12), showlegend=False))
         fig.update_layout(height=300, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="PO₂ (mmHg)",
-                          yaxis_title="Saturation de l'Hb (%)", legend=dict(orientation="h", y=-0.25))
-        st.plotly_chart(fig, width="stretch")
+                          yaxis_title="Saturation de l'Hb (%)", legend=dict(orientation="h", y=-0.25),
+                          xaxis_range=[0, 120], yaxis_range=[0, 105])
+        ui.chart(fig, "physio_systemes_0")
         st.caption(f"P50 = {p50:.1f} mmHg ; saturation à {po2} mmHg : {sat(po2, p50):.0f} %.")
     ui.md(r"""
 C'est l'[[effet bohr|effet Bohr]] : dans un muscle qui travaille (plus acide, plus chaud, plus de CO₂), la courbe se

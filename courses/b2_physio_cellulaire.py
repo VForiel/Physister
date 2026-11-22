@@ -104,8 +104,7 @@ la pompe Na⁺/K⁺.
 Pour chaque ion, il existe un potentiel où la force électrique compense exactement la force de diffusion : le
 **potentiel d'équilibre**, donné par l'[[équation de nernst|équation de Nernst]] :
 
-$$E_{ion} = \frac{RT}{zF} \ln\frac{[\text{ion}]_{ext}}{[\text{ion}]_{int}} \approx \frac{61{,}5\ \text{mV}}{z}
-\log_{10}\frac{[\text{ion}]_{ext}}{[\text{ion}]_{int}} \quad (37\,°C)$$
+$$E_{ion} = \frac{RT}{zF} \ln\frac{[\text{ion}]_{ext}}{[\text{ion}]_{int}} \approx \frac{61{,}5\ \text{mV}}{z} \log_{10}\frac{[\text{ion}]_{ext}}{[\text{ion}]_{int}} \quad (37\,°C)$$
 
 Au repos, la membrane est surtout perméable au **K⁺** : le [[potentiel de repos]] (≈ −70 mV) est donc proche de
 $E_K$ (≈ −90 mV), un peu tiré vers $E_{Na}$ (≈ +60 mV) par une petite perméabilité au Na⁺. L'équation de
@@ -184,8 +183,9 @@ troponine) et épais de **myosine**.
     fig = go.Figure(go.Scatter(x=x, y=y, mode="lines"))
     fig.add_trace(go.Scatter(x=[L], y=[f], mode="markers", marker=dict(size=13)))
     fig.update_layout(height=260, margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
-                      xaxis_title="Longueur du sarcomère (µm)", yaxis_title="Force active (relative)")
-    st.plotly_chart(fig, width="stretch")
+                      xaxis_title="Longueur du sarcomère (µm)", yaxis_title="Force active (relative)",
+                      xaxis_range=[1.2, 3.8], yaxis_range=[0, 1.1])
+    ui.chart(fig, "physio_cellulaire_0")
     msg = ("trop court : les filaments se chevauchent et se gênent" if L < 2.0 else
            "zone optimale : chevauchement maximal" if L <= 2.25 else
            "étiré : moins de ponts possibles" if L < 3.65 else "plus aucun chevauchement : force nulle")

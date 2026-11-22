@@ -149,13 +149,14 @@ prévalence.
         inc = st.slider("Incidence (nouveaux cas pour 1000 personnes par an)", 1, 100, 10, key="ss_inc")
         dur = st.slider("Durée moyenne de la maladie (années)", 0.1, 30.0, 5.0, 0.1, key="ss_dur")
     years = np.arange(0, 40.1, 0.5)
-    prev = inc * dur * (1 - np.exp(-years / dur))
+    prev = np.minimum(inc * dur * (1 - np.exp(-years / dur)), 1000)
     with c2:
         fig = go.Figure(go.Scatter(x=years, y=prev, mode="lines", fill="tozeroy"))
         fig.update_layout(height=260, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="Années",
-                          yaxis_title="Prévalence (pour 1000)")
-        st.plotly_chart(fig, width="stretch")
-        st.metric("Prévalence à l'équilibre", f"≈ {inc * dur:.0f} pour 1000")
+                          yaxis_title="Prévalence (pour 1000)",
+                          xaxis_range=[0, 40], yaxis_range=[0, 1000])
+        ui.chart(fig, "systeme_sante_0")
+        st.metric("Prévalence à l'équilibre", f"≈ {min(inc * dur, 1000):.0f} pour 1000")
     ui.warn("Ne confonds pas : « 10 % des adultes **ont** mal au dos aujourd'hui » est une **prévalence** ; « 2 % des "
             "adultes **commencent** une lombalgie chaque mois » est une **incidence**.")
     ui.md(r"""

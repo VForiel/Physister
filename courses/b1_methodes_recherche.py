@@ -139,7 +139,8 @@ def ch_chercher():
     fig.update_layout(height=260, margin=dict(l=10, r=10, t=10, b=10), xaxis=dict(visible=False, range=[-0.2, 3.4]),
                       yaxis=dict(visible=False, scaleanchor="x", range=[-0.1, 2.1]), showlegend=False)
     c1, c2 = st.columns([2, 1])
-    c1.plotly_chart(fig, width="stretch")
+    with c1:
+        ui.chart(fig, "methodes_recherche_0")
     c2.metric("Articles trouvés", n)
     ui.memo("**AND** = « et aussi » : moins de résultats. **OR** = « ou bien » : plus de résultats. "
             "**NOT** = « sauf » : à utiliser avec prudence, on exclut vite des articles utiles.")

@@ -154,8 +154,9 @@ dépend de la prévalence.
         fig = go.Figure(go.Scatter(x=xs * 100, y=vpps * 100, mode="lines"))
         fig.add_trace(go.Scatter(x=[prev * 100], y=[vpp * 100], mode="markers", marker=dict(size=12)))
         fig.update_layout(height=240, margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
-                          xaxis_title="Prévalence (%)", yaxis_title="VPP (%)")
-        st.plotly_chart(fig, width="stretch")
+                          xaxis_title="Prévalence (%)", yaxis_title="VPP (%)",
+                          xaxis_range=[0, 50], yaxis_range=[0, 100])
+        ui.chart(fig, "intro_pathologie_0")
     ui.tip("Avec une prévalence de 1 %, un test sensible à 90 % et spécifique à 95 % : sur 100 positifs, seuls 15 "
            "environ sont vraiment malades. C'est pourquoi on ne fait pas passer n'importe quel test à tout le monde.")
 

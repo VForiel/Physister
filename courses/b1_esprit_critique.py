@@ -180,8 +180,9 @@ def ch_donnees():
                                    marker=dict(color=temp if show else None, colorscale="RdBu_r", showscale=show,
                                                colorbar=dict(title="°C"))))
         fig.update_layout(height=320, margin=dict(l=10, r=10, t=30, b=10), title=f"Corrélation r = {r:.2f}",
-                          xaxis_title="Glaces vendues", yaxis_title="Noyades")
-        st.plotly_chart(fig, width="stretch")
+                          xaxis_title="Glaces vendues", yaxis_title="Noyades",
+                          xaxis_range=[0, 420], yaxis_range=[-3, 9])
+        ui.chart(fig, "esprit_critique_0")
     st.caption("Les glaces ne causent pas les noyades : quand il fait chaud, on mange des glaces **et** on se baigne.")
 
     st.markdown("#### À toi : le graphique qui ment")

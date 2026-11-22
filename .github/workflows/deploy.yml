@@ -1,4 +1,4 @@
-# Tests, puis déploiement sur VPS1 : main → https://etudes.audrey.foriel.xyz.
+# Tests, puis déploiement sur VPS1 : main → https://etudes.audrey.foriel.pro.
 # La clé DEPLOY_SSH_KEY ne peut que lancer ~/deploy/gate.sh physister sur VPS1 (commande forcée dans authorized_keys).
 # VPS1_KNOWN_HOSTS épingle la clé d'hôte du serveur.
 name: Deploy
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://etudes.audrey.foriel.xyz
+      url: https://etudes.audrey.foriel.pro
     steps:
       - name: Deploy on VPS1
         env:

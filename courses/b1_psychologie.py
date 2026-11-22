@@ -179,8 +179,9 @@ puis diminue. L'optimum est plus bas pour les tâches complexes.
         fig = go.Figure(go.Scatter(x=x, y=y, mode="lines"))
         fig.add_trace(go.Scatter(x=[act], y=[np.exp(-((act - opt) / 2.6) ** 2)], mode="markers", marker=dict(size=13)))
         fig.update_layout(height=260, margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
-                          xaxis_title="Activation", yaxis_title="Performance")
-        st.plotly_chart(fig, width="stretch")
+                          xaxis_title="Activation", yaxis_title="Performance",
+                          xaxis_range=[0, 10], yaxis_range=[0, 1.1])
+        ui.chart(fig, "psychologie_0")
 
 
 def ch_sante():

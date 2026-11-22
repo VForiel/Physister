@@ -250,7 +250,7 @@ def quiz(questions: list[Question], key: str, progress_code: str, show_course: b
                     else:
                         st.error(f"Réponse attendue : **{_correct_text(inst)}**", icon=":material/cancel:")
                     if inst.why:
-                        st.markdown(f"<div class='why'>{inst.why}</div>", unsafe_allow_html=True)
+                        st.caption(f":material/info: {inst.why}")
         submitted = st.form_submit_button("Corriger", type="primary", icon=":material/fact_check:")
 
     if submitted:

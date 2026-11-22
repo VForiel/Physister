@@ -210,8 +210,9 @@ Son grand avantage : les **poumons** règlent le CO₂ (en quelques minutes) et 
         fig.add_hrect(y0=7.35, y1=7.45, fillcolor="green", opacity=0.12, line_width=0)
         fig.add_trace(go.Scatter(x=[paco2], y=[ph], mode="markers", marker=dict(size=12), name="Ton patient"))
         fig.update_layout(height=280, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="PaCO₂ (mmHg)",
-                          yaxis_title="pH", showlegend=False)
-        st.plotly_chart(fig, width="stretch")
+                          yaxis_title="pH", showlegend=False,
+                          xaxis_range=[20, 80], yaxis_range=[6.6, 8.0])
+        ui.chart(fig, "chimie_0")
     ui.clinic("Un patient BPCO qui ventile mal garde son CO₂ : **acidose respiratoire**. Ses reins compensent "
               "lentement en retenant des bicarbonates. À l'inverse, une crise d'angoisse avec hyperventilation "
               "fait chuter le CO₂ : **alcalose respiratoire** (fourmillements autour de la bouche, vertiges).")

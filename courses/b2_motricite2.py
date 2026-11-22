@@ -67,8 +67,9 @@ def ch_eau():
         fig = go.Figure(go.Scatter(x=x * 100, y=np.interp(x, xs, ys), mode="lines"))
         fig.add_trace(go.Scatter(x=[h * 100], y=[charge], mode="markers", marker=dict(size=12)))
         fig.update_layout(height=230, margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
-                          xaxis_title="Hauteur d'immersion (% de la taille)", yaxis_title="Charge (% poids du corps)")
-        st.plotly_chart(fig, width="stretch")
+                          xaxis_title="Hauteur d'immersion (% de la taille)", yaxis_title="Charge (% poids du corps)",
+                          xaxis_range=[0, 100], yaxis_range=[0, 105])
+        ui.chart(fig, "motricite2_0")
     st.caption("Ordres de grandeur pour une personne debout immobile (d'après Harrison et al., 1992). En marchant, la "
                "charge augmente, d'autant plus qu'on marche vite.")
     ui.warn("Contre-indications ou précautions de la balnéothérapie : plaies ouvertes, infections, incontinence non "

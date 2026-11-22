@@ -152,7 +152,7 @@ aléatoire, qui se compense sur de grands nombres).
         fig.add_trace(go.Scatter(x=pts[:, 0], y=pts[:, 1], mode="markers", marker=dict(size=9, color="#4d5f92")))
         fig.update_layout(height=300, margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
                           xaxis=dict(visible=False, range=[-3, 3]), yaxis=dict(visible=False, scaleanchor="x", range=[-3, 3]))
-        st.plotly_chart(fig, width="stretch")
+        ui.chart(fig, "recolte_donnees_0")
     fiable = "fiable" if bruit < 0.4 else "peu fiable"
     valide = "valide" if biais < 0.3 and bruit < 0.6 else "peu valide"
     st.markdown(f"Mesure **{fiable}** et **{valide}**.")

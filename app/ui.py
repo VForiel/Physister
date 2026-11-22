@@ -22,7 +22,6 @@ div.why { font-size: 0.92rem; opacity: 0.9; border-left: 2px solid var(--primary
           padding: 0.1rem 0 0.1rem 0.8rem; margin-top: 0.3rem; }
 .code-badge { font-family: ui-monospace, monospace; font-size: 0.85rem; padding: 0.1rem 0.45rem;
               border: 1px solid rgba(128,128,128,0.35); border-radius: 8px; margin-right: 0.4rem; }
-.card-face { font-size: 1.25rem; padding: 1.6rem 1rem; text-align: center; min-height: 6rem; }
 </style>
 """
 
@@ -110,6 +109,22 @@ def key_points(points: list[str]):
     st.success("**À retenir**\n\n" + body, icon=":material/bookmark:")
 
 
+def chart(fig, key: str):
+    """Graphique Plotly à axes fixes : quand on bouge un curseur, seules les courbes changent.
+
+    Un interrupteur rend l'échelle automatique ; le zoom et le déplacement faits à la souris (barre d'outils du
+    graphique) sont gardés quand les données changent (uirevision).
+    """
+    auto = st.toggle("Échelle auto", key=f"{key}_auto", help="Ajuster les axes aux courbes. Sinon les axes restent "
+                     "fixes pour mieux voir l'effet des réglages. Zoom et déplacement : barre d'outils du graphique.")
+    fig.update_layout(uirevision=key)
+    if auto:
+        fig.update_xaxes(autorange=True)
+        fig.update_yaxes(autorange=True)
+        fig.update_layout(uirevision=f"{key}_auto")
+    st.plotly_chart(fig, width="stretch", key=key, config={"displaylogo": False})
+
+
 def section(title: str, text: str = ""):
     st.subheader(title, divider="gray")
     if text:
@@ -182,11 +197,12 @@ def flashcards(cards: list[tuple[str, str]], key: str, code: str):
     front, back = cards[idx]
     if reverse:
         front, back = back, front
+    # pas de HTML autour du texte : le LaTeX ($…$) ne serait plus interprété
     with st.container(border=True):
-        st.markdown(f"<div class='card-face'>{terms(front)}</div>", unsafe_allow_html=True)
+        st.markdown(f"#### {terms(front)}", unsafe_allow_html=True)
         if state["flip"]:
             st.divider()
-            st.markdown(f"<div class='card-face'>{terms(back)}</div>", unsafe_allow_html=True)
+            st.markdown(terms(back), unsafe_allow_html=True)
 
     b1, b2, b3 = st.columns(3)
     if not state["flip"]:

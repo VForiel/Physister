@@ -123,7 +123,7 @@ C'est ce que fait le **nomogramme de Fagan**.
         fig.update_layout(height=250, margin=dict(l=10, r=10, t=10, b=10), yaxis_title="Probabilité (%)",
                           xaxis=dict(tickvals=[0, 1], ticktext=["avant le test", "après le test"]), yaxis_range=[0, 100],
                           legend=dict(orientation="h", y=-0.2))
-        st.plotly_chart(fig, width="stretch")
+        ui.chart(fig, "ebp2_0")
     ui.tip("Essaie une probabilité pré-test de 2 % (patient sans facteur de risque) : même un bon test positif ne "
            "rend pas la maladie très probable. D'où l'importance de l'**anamnèse**, qui fixe la probabilité de départ.")
     ui.md(r"""

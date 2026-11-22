@@ -69,8 +69,7 @@ elle est fausse. Une force est en newtons, et $1\,\text{N} = 1\,\text{kg·m/s}^2
 
 **Trigonométrie du triangle rectangle** (indispensable pour décomposer les forces) :
 
-$$\sin\alpha = \frac{\text{opposé}}{\text{hypoténuse}} \qquad \cos\alpha = \frac{\text{adjacent}}{\text{hypoténuse}}
-\qquad \tan\alpha = \frac{\text{opposé}}{\text{adjacent}}$$
+$$\sin\alpha = \frac{\text{opposé}}{\text{hypoténuse}} \qquad \cos\alpha = \frac{\text{adjacent}}{\text{hypoténuse}} \qquad \tan\alpha = \frac{\text{opposé}}{\text{adjacent}}$$
 """)
     ui.memo("**SOH-CAH-TOA** : **S**inus = **O**pposé/**H**ypoténuse, **C**osinus = **A**djacent/**H**ypoténuse, "
             "**T**angente = **O**pposé/**A**djacent.")
@@ -90,7 +89,7 @@ $$\sin\alpha = \frac{\text{opposé}}{\text{hypoténuse}} \qquad \cos\alpha = \fr
                            arrowcolor="#2e8b57")
         fig.update_layout(height=280, margin=dict(l=10, r=10, t=10, b=10), xaxis_range=[0, 520], yaxis_range=[0, 520],
                           yaxis_scaleanchor="x")
-        st.plotly_chart(fig, width="stretch")
+        ui.chart(fig, "physique_0")
         st.markdown(f"Composante horizontale (rouge) : $F\\cos\\alpha$ = **{fx:.0f} N** · "
                     f"verticale (vert) : $F\\sin\\alpha$ = **{fy:.0f} N**")
     ui.md(r"""
@@ -127,8 +126,8 @@ $$x(t) = v_0\cos\theta \cdot t \qquad y(t) = h_0 + v_0\sin\theta \cdot t - \tfra
     with c2:
         fig = go.Figure(go.Scatter(x=x, y=y, mode="lines"))
         fig.update_layout(height=300, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="x (m)", yaxis_title="y (m)",
-                          yaxis_scaleanchor="x", xaxis_range=[0, max(5, x[-1] * 1.05)])
-        st.plotly_chart(fig, width="stretch")
+                          xaxis_range=[0, 100], yaxis_range=[0, 50])
+        ui.chart(fig, "physique_1")
         k1, k2, k3 = st.columns(3)
         k1.metric("Portée", f"{x[-1]:.1f} m")
         k2.metric("Hauteur max", f"{h0 + vy ** 2 / (2 * G):.1f} m")
@@ -209,8 +208,8 @@ diminuent.
     with c2:
         fig = go.Figure(go.Scatter(x=t, y=xs, mode="lines"))
         fig.update_layout(height=280, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="t (s)",
-                          yaxis_title="position (m)")
-        st.plotly_chart(fig, width="stretch")
+                          yaxis_title="position (m)", xaxis_range=[0, 6], yaxis_range=[-0.12, 0.12])
+        ui.chart(fig, "physique_2")
         regime = "sous-amorti (oscille)" if c < crit else ("critique" if abs(c - crit) < 1 else "sur-amorti (pas d'oscillation)")
         st.caption(f"Amortissement critique : c = 2√(km) ≈ {crit:.1f} N·s/m. Régime actuel : {regime}.")
     ui.clinic("Les tendons et ligaments sont **viscoélastiques** : un peu ressort (élastiques), un peu amortisseur "

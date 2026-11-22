@@ -284,7 +284,7 @@ def ch_explorateur():
         fig.add_trace(go.Scatter(x=x, y=y, fill="toself", name=f"Mesuré : {mesure}°", opacity=0.6))
         fig.update_layout(height=320, margin=dict(l=10, r=10, t=10, b=10), xaxis=dict(visible=False, range=[-1.1, 1.1]),
                           yaxis=dict(visible=False, scaleanchor="x", range=[-0.2, 1.1]), legend=dict(orientation="h"))
-        st.plotly_chart(fig, width="stretch")
+        ui.chart(fig, "anatomie_locomoteur_0")
         if normal:
             st.metric("Pourcentage de l'amplitude normale", f"{mesure / normal:.0%}")
 

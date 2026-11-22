@@ -136,8 +136,10 @@ comprendre sans ambiguïté.
                                      colorscale=[[0, "#4d5f92"], [1, "#4d5f92"]]))
         fig.update_layout(height=430, margin=dict(l=0, r=0, t=0, b=0), showlegend=False,
                           scene=dict(xaxis_title="gauche ↔ droite", yaxis_title="arrière ↔ avant", zaxis_title="",
-                                     aspectmode="data", camera=dict(eye=dict(x=1.4, y=1.4, z=0.6))))
-        st.plotly_chart(fig, width="stretch")
+                                     aspectmode="manual", aspectratio=dict(x=0.7, y=0.7, z=1.1),
+                                     xaxis_range=[-0.6, 0.6], yaxis_range=[-0.6, 0.6], zaxis_range=[0, 1.85],
+                                     camera=dict(eye=dict(x=1.4, y=1.4, z=0.6))))
+        ui.chart(fig, "anatomie_generale_0")
         st.caption("Fais tourner la figure avec la souris (ou le doigt).")
     ui.memo("Flexion/extension → **sagittal** ; abduction/adduction → **frontal** ; rotation → **transversal**. "
             "Pour l'axe : il est toujours **perpendiculaire** au plan. La flexion du coude se fait dans le plan "

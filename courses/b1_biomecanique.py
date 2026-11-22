@@ -184,8 +184,8 @@ Et tant que sa projection verticale tombe dans le [[polygone de sustentation]], 
         fig.update_layout(height=520, margin=dict(l=10, r=10, t=10, b=10), showlegend=True,
                           legend=dict(orientation="h", y=-0.05),
                           xaxis=dict(range=[-1.0, 1.2], title="m", zeroline=False),
-                          yaxis=dict(range=[-0.05, taille * 1.1], scaleanchor="x", title="m"))
-        st.plotly_chart(fig, width="stretch")
+                          yaxis=dict(range=[-0.05, 2.25], scaleanchor="x", title="m"))
+        ui.chart(fig, "biomecanique_0")
         h_pct = com[1] / taille
         if ok:
             st.success(f"Équilibre : la projection du CG tombe dans la base d'appui. Hauteur du CG : "
@@ -310,8 +310,9 @@ qui passe par l'axe ne fait rien tourner, même si elle est énorme.
         fig = go.Figure(go.Scatter(x=thetas, y=fs, mode="lines", name="Force du biceps"))
         fig.add_trace(go.Scatter(x=[angle], y=[f], mode="markers", marker=dict(size=12), name="Position choisie"))
         fig.update_layout(height=300, margin=dict(l=10, r=10, t=30, b=10), title="Force du biceps selon l'angle",
-                          xaxis_title="Flexion du coude (°)", yaxis_title="Force (N)", showlegend=False)
-        st.plotly_chart(fig, width="stretch")
+                          xaxis_title="Flexion du coude (°)", yaxis_title="Force (N)", showlegend=False,
+                          xaxis_range=[10, 150], yaxis_range=[0, 3500])
+        ui.chart(fig, "biomecanique_1")
     ui.md(rf"""
 Avec un bras de levier du biceps d'environ **{r_m * 100:.1f} cm** contre **35 cm** pour la charge, le biceps
 doit tirer à peu près **{0.35 / r_m:.0f} fois** plus fort que le poids qu'il retient. Le levier de 3e genre
@@ -392,7 +393,7 @@ trajectoire), puis un second pic à la poussée.
     fig.add_hline(y=1, line_dash="dot", annotation_text="poids du corps")
     fig.update_layout(height=300, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="% de la phase d'appui",
                       yaxis_title="Force / poids du corps", yaxis_range=[0, 1.5])
-    st.plotly_chart(fig, width="stretch")
+    ui.chart(fig, "biomecanique_2")
     st.caption("Allure schématique : les valeurs exactes dépendent de la personne. Plus on marche vite, plus les "
                "pics montent et plus le creux se creuse.")
     st.markdown("#### Quelques boiteries à reconnaître")

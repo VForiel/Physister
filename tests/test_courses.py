@@ -74,3 +74,13 @@ def test_chapters_render(mod):
         at.session_state[f"{code}_chapter"] = name
         at.run()
         assert not at.exception, f"{code} / {name} : {at.exception}"
+
+
+def test_display_math_on_one_line():
+    """Un bloc $$…$$ réparti sur plusieurs lignes s'affiche mal dans Streamlit."""
+    bad = []
+    for path in (ROOT / "courses").glob("*.py"):
+        for m in re.finditer(r"\$\$(.+?)\$\$", path.read_text(encoding="utf-8"), flags=re.S):
+            if "\n" in m.group(1):
+                bad.append(f"{path.name}: {m.group(1)[:40]}")
+    assert not bad, bad
