@@ -1,0 +1,45 @@
+# Tests, puis déploiement sur VPS1 : main → https://etudes.audrey.foriel.xyz.
+# La clé DEPLOY_SSH_KEY ne peut que lancer ~/deploy/gate.sh physister sur VPS1 (commande forcée dans authorized_keys).
+# VPS1_KNOWN_HOSTS épingle la clé d'hôte du serveur.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest tests -q
+
+  deploy:
+    needs: tests
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://etudes.audrey.foriel.xyz
+    steps:
+      - name: Deploy on VPS1
+        env:
+          KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.VPS1_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy -o IdentitiesOnly=yes -o BatchMode=yes ubuntu@152.228.240.129 prod
