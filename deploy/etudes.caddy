@@ -1,0 +1,9 @@
+# Physister (~/Physister) : site d'études de kiné, conteneur démarré à la demande (unités systemd physister-*).
+etudes.audrey.foriel.xyz {
+	import security_headers
+	header {
+		X-Robots-Tag "noindex, nofollow"
+		-Server
+	}
+	reverse_proxy 172.20.0.1:8601
+}

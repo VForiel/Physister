@@ -1,0 +1,9 @@
+.git
+.venv
+.github
+__pycache__
+data
+tests
+deploy
+*.png
+!assets/**

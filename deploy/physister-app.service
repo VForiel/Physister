@@ -1,0 +1,14 @@
+# Conteneur du site, démarré à la demande par physister-proxy.service et arrêté quand plus personne ne l'utilise.
+[Unit]
+Description=Physister (Streamlit) à la demande
+Requires=docker.service
+After=docker.service
+StopWhenUnneeded=yes
+
+[Service]
+ExecStartPre=-/usr/bin/docker rm -f physister
+ExecStart=/usr/bin/docker run --rm --name physister -p 127.0.0.1:8602:8501 -v /home/ubuntu/Physister-data:/data physister:latest
+# Attendre que Streamlit réponde avant de laisser passer la première requête
+ExecStartPost=/bin/sh -c 'for i in $(seq 1 60); do curl -fs http://127.0.0.1:8602/_stcore/health >/dev/null && exit 0; sleep 0.5; done; exit 1'
+ExecStop=/usr/bin/docker stop -t 5 physister
+Restart=no

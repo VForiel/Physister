@@ -1,0 +1,9 @@
+# Relais lancé à la première connexion : démarre le conteneur, puis s'arrête après 10 min sans connexion,
+# ce qui arrête aussi le conteneur (StopWhenUnneeded).
+[Unit]
+Description=Physister : relais vers le conteneur
+Requires=physister-app.service physister-proxy.socket
+After=physister-app.service physister-proxy.socket
+
+[Service]
+ExecStart=/lib/systemd/systemd-socket-proxyd --exit-idle-time=10min 127.0.0.1:8602

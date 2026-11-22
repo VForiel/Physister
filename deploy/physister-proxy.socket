@@ -1,0 +1,11 @@
+# Écoute sur la passerelle du réseau Docker « proxy », joignable par le conteneur Caddy partagé.
+[Unit]
+Description=Physister : socket d'activation
+After=docker.service
+
+[Socket]
+ListenStream=172.20.0.1:8601
+FreeBind=yes
+
+[Install]
+WantedBy=sockets.target
