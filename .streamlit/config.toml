@@ -1,0 +1,28 @@
+[server]
+headless = true
+runOnSave = false
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#4d5f92"
+baseRadius = "8px"
+borderColor = "#d4d7e0"
+showSidebarBorder = true
+
+[theme.light]
+primaryColor = "#4d5f92"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f3f4f8"
+textColor = "#1d2230"
+
+[theme.dark]
+primaryColor = "#9fb0e6"
+backgroundColor = "#14161c"
+secondaryBackgroundColor = "#1d2029"
+textColor = "#e6e8ee"
+borderColor = "#2e323d"
+
+[client]
+toolbarMode = "minimal"
